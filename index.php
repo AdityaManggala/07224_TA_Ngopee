@@ -59,7 +59,9 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
             require_once("View/admin/kurir.php");
         } else if ($aksi == 'transaksi') {
             require_once("View/admin/transaksi.php");
-        } else {
+        } else if ($aksi == 'pembayaran') {
+            require_once("View/admin/pembayaran.php");
+        }else {
             require_once("View/menu/error-404.php");
         }
     } else if ($page == "pelanggan") {

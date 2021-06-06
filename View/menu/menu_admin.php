@@ -24,7 +24,7 @@
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
-                        <div class="logo">
+                        <div class="logo ms-3">
                             <a href="#"><img src="assets/images/logo/kopa.png" alt="Logo"><h5>ngopee.</h5></a>
                         </div>
                         <div class="toggler">
@@ -61,6 +61,13 @@
                             <a href="index.php?page=admin&aksi=transaksi" class='sidebar-link'>
                                 <i class="bi bi-cash"></i>
                                 <span>Transaksi</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item ">
+                            <a href="index.php?page=admin&aksi=pembayaran" class='sidebar-link'>
+                                <i class="bi bi-credit-card-2-back-fill"></i>
+                                <span>Pembayaran</span>
                             </a>
                         </li>
 

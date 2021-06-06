@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
 
     <link rel="stylesheet" href="assets/vendors/iconly/bold.css" />
-
+    <link rel="stylesheet" href="assets/vendors/toastify/toastify.css">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet">
     <link
       rel="stylesheet"
       href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css"
@@ -49,19 +50,19 @@
                 <div class="card">
                   <div class="card-header">
                     <h4 class="card-title">Data Produk</h4>
-                    <div class="col-12 d-flex justify-content-end">
+                    <div class="col-12 d-flex justify-content-start mt-4 mb-2">
                       <button
                         type="button"
                         class="btn btn-outline-success"
                         data-bs-toggle="modal"
-                        data-bs-target="#inlineForm"
+                        data-bs-target="#Produk"
                       >
                         Tambah Produk
                       </button>
                     </div>
                     <div
                       class="modal fade text-left"
-                      id="inlineForm"
+                      id="Produk"
                       tabindex="-1"
                       role="dialog"
                       aria-labelledby="myModalLabel33"
@@ -91,22 +92,27 @@
                           </div>
                           <form action="#">
                             <div class="modal-body">
-                              <label>Email: </label>
+                              <label>Nama Produk : </label>
                               <div class="form-group">
                                 <input
                                   type="text"
-                                  placeholder="Email Address"
+                                  placeholder="Nama"
                                   class="form-control"
                                 />
                               </div>
-                              <label>Password: </label>
+                              <label>Harga : </label>
                               <div class="form-group">
                                 <input
-                                  type="password"
-                                  placeholder="Password"
+                                  type="number"
+                                  placeholder="Harga"
                                   class="form-control"
                                 />
                               </div>
+                              <label>Gambar : </label>
+                              <div class="form-group">
+                              <input type="file" name="image" class="form-control basic-filepond">
+                              </div>
+                              
                             </div>
                             <div class="modal-footer">
                               <button
@@ -130,46 +136,37 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="card-content">
-                    <!-- <div class="card-body">
-                                    <a href="#" class="btn btn-primary note-float-right">Primary</a>
-                                    </div> -->
-                    <!-- table hover -->
                     <div class="table-responsive">
-                      <table class="table table-hover mb-0">
-                        <thead>
-                          <tr>
-                            <th>NAME</th>
-                            <th>RATE</th>
-                            <th>SKILL</th>
-                            <th>TYPE</th>
-                            <th>LOCATION</th>
-                            <th>ACTION</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="text-bold-500">Michael Right</td>
-                            <td>$15/hr</td>
-                            <td class="text-bold-500">UI/UX</td>
-                            <td>Remote</td>
-                            <td>Austin,Taxes</td>
-                            <td>
-                              <a href="#"
-                                ><i
-                                  class="
-                                    badge-circle badge-circle-light-secondary
-                                    font-medium-1
-                                  "
-                                  data-feather="mail"
-                                ></i>
-                              </a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th>NAMA PRODUK</th>
+                              <th>JENIS PRODUK</th>
+                              <th>HARGA PRODUK</th>
+                              <th>AKSI</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="text-bold-500">Coffe Latte</td>
+                              <td>Espresso</td>
+                              <td>10000</td>
+                              <td>
+                              <a
+                                  href="index.php?page=praktikum&aksi=edit&id=#"
+                                  class="btn btn-warning"
+                                  >Edit</a
+                                >
+                                <a
+                                  href="index.php?page=praktikum&aksi=edit&id=#"
+                                  class="btn btn-danger"
+                                  >Hapus</a
+                                >
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -181,19 +178,19 @@
                 <div class="card">
                   <div class="card-header">
                     <h4 class="card-title">Data Kategori</h4>
-                    <div class="col-12 d-flex justify-content-end">
+                    <div class="col-12 d-flex justify-content-start mt-4 mb-2">
                       <button
                         type="button"
                         class="btn btn-outline-success"
                         data-bs-toggle="modal"
-                        data-bs-target="#inlineForm"
+                        data-bs-target="#Kategori"
                       >
                         Tambah Kategori
                       </button>
                     </div>
                     <div
                       class="modal fade text-left"
-                      id="inlineForm"
+                      id="Kategori"
                       tabindex="-1"
                       role="dialog"
                       aria-labelledby="myModalLabel33"
@@ -223,19 +220,11 @@
                           </div>
                           <form action="#">
                             <div class="modal-body">
-                              <label>Email: </label>
+                              <label>Nama Kategori: </label>
                               <div class="form-group">
                                 <input
                                   type="text"
-                                  placeholder="Email Address"
-                                  class="form-control"
-                                />
-                              </div>
-                              <label>Password: </label>
-                              <div class="form-group">
-                                <input
-                                  type="password"
-                                  placeholder="Password"
+                                  placeholder="Kategori"
                                   class="form-control"
                                 />
                               </div>
@@ -262,35 +251,33 @@
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="card-content">
                     <div class="table-responsive">
-                      <table class="table table-hover mb-0">
-                        <thead>
-                          <tr>
-                            <th>NAME</th>
-                            <th>RATE</th>
-                            <th>SKILL</th>
-                            <th>TYPE</th>
-                            <th>LOCATION</th>
-                            <th>ACTION</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="text-bold-500">Michael Right</td>
-                            <td>$15/hr</td>
-                            <td class="text-bold-500">UI/UX</td>
-                            <td>Remote</td>
-                            <td>Austin,Taxes</td>
-                            <td>
-                              <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-warning">Edit</a>
-                              <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-danger">Hapus</a>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th class="col-9">NAMA KATEGORI</th>
+                              <th class="col-3">AKSI</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="text-bold-500">Espresso</td>
+                              <td>
+                                <a
+                                  href="index.php?page=praktikum&aksi=edit&id=#"
+                                  class="btn btn-warning"
+                                  >Edit</a
+                                >
+                                <a
+                                  href="index.php?page=praktikum&aksi=edit&id=#"
+                                  class="btn btn-danger"
+                                  >Hapus</a
+                                >
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                   </div>
                 </div>
               </div>
@@ -302,9 +289,18 @@
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/vendors/apexcharts/apexcharts.js"></script>
     <script src="assets/js/pages/dashboard.js"></script>
 
     <script src="assets/js/main.js"></script>
+    <!-- filepond -->
+    <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
+    <script>
+      FilePond.create( document.querySelector('.basic-filepond'), { 
+        allowImagePreview: false,
+        allowMultiple: false,
+        allowFileEncode: false,
+        required: false
+    });
+    </script>
   </body>
 </html>

@@ -51,37 +51,42 @@
                     <h4 class="card-title">Data Pelanggan</h4>
                   </div>
                   <div class="card-content">
-                    <!-- <div class="card-body">
-                                    <a href="#" class="btn btn-primary note-float-right">Primary</a>
-                                    </div> -->
-                    <!-- table hover -->
-                    <div class="table-responsive">
-                      <table class="table table-hover mb-0">
-                        <thead>
-                          <tr>
-                            <th>NAME</th>
-                            <th>RATE</th>
-                            <th>SKILL</th>
-                            <th>TYPE</th>
-                            <th>LOCATION</th>
-                            <th>ACTION</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td class="text-bold-500">Michael Right</td>
-                            <td>$15/hr</td>
-                            <td class="text-bold-500">UI/UX</td>
-                            <td>Remote</td>
-                            <td>Austin,Taxes</td>
-                            <td>
-                              <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-warning">Edit</a>
-                              <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-danger">Hapus</a>
-        
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                          <thead>
+                            <tr>
+                              <th>NAMA</th>
+                              <th>ALAMAT</th>
+                              <th>EMAIL</th>
+                              <th>PASSWORD</th>
+                              <th>NO TELP</th>
+                              <th>AKSI</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>Michael Right</td>
+                              <td>Surabaya</td>
+                              <td>email123@gmail.com</td>
+                              <td>123</td>
+                              <td>08980308515</td>
+                              <td>
+                                <a
+                                  href="index.php?page=praktikum&aksi=edit&id=#"
+                                  class="btn btn-warning"
+                                  >Edit</a
+                                >
+                                <a
+                                  href="index.php?page=praktikum&aksi=edit&id=#"
+                                  class="btn btn-danger"
+                                  >Hapus</a
+                                >
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>

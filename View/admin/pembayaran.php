@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transaksi</title>
+    <title>Pembayaran</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -42,39 +42,39 @@
 
         <div class="page-heading">
           <div class="page-title">
-            <h3>Transaksi</h3>
+            <h3>Pembayaran</h3>
           </div>
         </div>
         <div class="page-content">
           <section class="section">
             <div class="card">
               <div class="card-header">
-                <h4 class="card-title">Data Transaksi</h4>
+                <h4 class="card-title">Data Pembayaran</h4>
               </div>
               <div class="card-body">
                 <table class="table table-striped" id="table1">
                   <thead>
                     <tr>
-                      <th>ID Transaksi</th>
                       <th>ID Pembayaran</th>
-                      <th>Tanggal Transaksi</th>
-                      <th>Nama Pelanggan</th>
-                      <th>Nama Sales</th>
-                      <th>Layanan Kurir</th>
+                      <th>ID Akun Bank</th>
+                      <th>ID Transaksi</th>
+                      <th>Nominal Transfer</th>
+                      <th>Bukti Transfer</th>
+                      <th>Keterangan</th>
                       <th>Status</th>
                       <th>Aksi</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td>TRX001</td>
                       <td>PMB001</td>
-                      <td>2021-06-06</td>
-                      <td>Graiden</td>
-                      <td>Sujiman</td>
-                      <td>JNE</td>
+                      <td>1</td>
+                      <td>TRX001</td>
+                      <td>90000</td>
+                      <td><img src="/assets//images/invoice/invoice.jpg" alt="bayar"></td>
+                      <td><p>pembayaran Kopi Late 2 pax</p></td>
                       <td>
-                        <span class="badge bg-success">Telah dikirim</span>
+                        <span class="badge bg-success">Telah dikonfirmasi</span>
                       </td>
                       <td>
                         <div
@@ -85,7 +85,7 @@
                           <a
                             href="index.php?page=praktikum&aksi=edit&id=#"
                             class="btn btn-primary"
-                            >Kirim</a
+                            >Konfirmasi</a
                           >
                           <a
                             href="index.php?page=praktikum&aksi=edit&id=#"
@@ -101,14 +101,14 @@
                       </td>
                     </tr>
                     <tr>
-                      <td>TRX002</td>
                       <td>PMB002</td>
-                      <td>2021-06-07</td>
-                      <td>Gaden</td>
-                      <td>Sukijan</td>
-                      <td>JNE</td>
+                      <td>2</td>
+                      <td>TRX002</td>
+                      <td>100000</td>
+                      <td><img src="/assets//images/invoice/invoice.jpg" alt="bayar"></td>
+                      <td><p>pembayaran Kopi Late 2 pax</p></td>
                       <td>
-                        <span class="badge bg-warning">Menunggu pengiriman</span>
+                        <span class="badge bg-warning">Menunggu Konfirmasi</span>
                       </td>
                       <td>
                         <div
@@ -119,7 +119,7 @@
                           <a
                             href="index.php?page=praktikum&aksi=edit&id=#"
                             class="btn btn-primary"
-                            >Kirim</a
+                            >Konfirmasi</a
                           >
                           <a
                             href="index.php?page=praktikum&aksi=edit&id=#"
