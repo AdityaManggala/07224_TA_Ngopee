@@ -44,7 +44,9 @@
               </p>
             </div>
           </div>
-          <div class="card">
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
             <img
               src="assets/images/kopi/caffe Latte.jpg"
               class="card-img-top img-fluid"
@@ -58,7 +60,167 @@
               </p>
             </div>
           </div>
-        </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-xl-3 col-lg-6 col-md-4 col-sm-6">
+        <div class="card">
+            <img
+              src="assets/images/kopi/caffe Latte.jpg"
+              class="card-img-top img-fluid"
+              alt="singleminded"
+            />
+            <div class="card-body">
+              <h5 class="card-title">Caffe Latte</h5>
+              <p class="card-text">
+                Caffè latte adalah espresso atau kopi yang dicampur dengan susu
+                dan memiliki lapisan busa yang tipis di bagian atasnya.
+              </p>
+            </div>
+          </div>
+          </div>
       </div>
     </div>
   </body>

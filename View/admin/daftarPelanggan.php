@@ -65,12 +65,18 @@
                             </tr>
                           </thead>
                           <tbody>
+                          <?php foreach ($pelanggan as $item):?>
                             <tr>
-                              <td>Michael Right</td>
+                              <td><?= $item['nama'] ?></td>
+                              <td><?= $item['alamat'] ?></td>
+                              <td><?= $item['email'] ?></td>
+                              <td><?= $item['password'] ?></td>
+                              <td><?= $item['nomor'] ?></td>
+                              <!-- <td>Michael Right</td>
                               <td>Surabaya</td>
                               <td>email123@gmail.com</td>
                               <td>123</td>
-                              <td>08980308515</td>
+                              <td>08980308515</td> -->
                               <td>
                                 <a
                                   href="index.php?page=praktikum&aksi=edit&id=#"
@@ -84,6 +90,7 @@
                                 >
                               </td>
                             </tr>
+                            <?php endforeach;?>
                           </tbody>
                         </table>
                       </div>

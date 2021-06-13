@@ -89,7 +89,7 @@
                               <i data-feather="x"></i>
                             </button>
                           </div>
-                          <form action="#">
+                          <form action="#" method="POST">
                             <div class="modal-body">
                               <label>Nama Layanan Kurir : </label>
                               <div class="form-group">

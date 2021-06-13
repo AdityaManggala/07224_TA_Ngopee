@@ -90,22 +90,30 @@
                               <i data-feather="x"></i>
                             </button>
                           </div>
-                          <form action="#">
+                          <form action="#" method="POST" enctype="multipart/form-data">
                             <div class="modal-body">
                               <label>Nama Produk : </label>
                               <div class="form-group">
                                 <input
                                   type="text"
                                   placeholder="Nama"
-                                  class="form-control"
+                                  class="form-control" name="nama"
                                 />
+                              </div>
+                              <label>Jenis Produk : </label>
+                              <div class="form-group">
+                                <Select name="jenisproduk" class="form-control" require>
+                                <?php foreach ($jenis as $row) :?>
+                                <option value="<?= $row['id'] ?>"><?= $row['nama'] ?></option>
+                                <?php endforeach;?>
+                                </Select>
                               </div>
                               <label>Harga : </label>
                               <div class="form-group">
                                 <input
                                   type="number"
                                   placeholder="Harga"
-                                  class="form-control"
+                                  class="form-control" name="harga"
                                 />
                               </div>
                               <label>Gambar : </label>
@@ -147,10 +155,15 @@
                             </tr>
                           </thead>
                           <tbody>
+                          <?php foreach ($kopi as $row):?>
                             <tr>
-                              <td class="text-bold-500">Coffe Latte</td>
+                              
+                              <!-- <td class="text-bold-500">Coffe Latte</td>
                               <td>Espresso</td>
-                              <td>10000</td>
+                              <td>10000</td> -->
+                              <td><?= $row['namaKopi'] ?></td>
+                              <td><?= $row['jenisKopi'] ?></td>
+                              <td><?= $row['hargaKopi'] ?></td>
                               <td>
                               <a
                                   href="index.php?page=praktikum&aksi=edit&id=#"
@@ -163,7 +176,9 @@
                                   >Hapus</a
                                 >
                               </td>
+                              
                             </tr>
+                            <?php endforeach;?>
                           </tbody>
                         </table>
                       </div>
@@ -218,7 +233,7 @@
                               <i data-feather="x"></i>
                             </button>
                           </div>
-                          <form action="#">
+                          <form action="#" method="POST">
                             <div class="modal-body">
                               <label>Nama Kategori: </label>
                               <div class="form-group">
@@ -260,8 +275,9 @@
                             </tr>
                           </thead>
                           <tbody>
+                          <?php foreach($jenis as $row):?>
                             <tr>
-                              <td class="text-bold-500">Espresso</td>
+                              <td class="text-bold-500"><?= $row['nama'] ?></td>
                               <td>
                                 <a
                                   href="index.php?page=praktikum&aksi=edit&id=#"
@@ -275,6 +291,7 @@
                                 >
                               </td>
                             </tr>
+                            <?php endforeach;?>
                           </tbody>
                         </table>
                       </div>
