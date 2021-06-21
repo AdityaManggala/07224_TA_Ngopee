@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,8 +15,6 @@
     <link rel="stylesheet" href="assets/vendors/iconly/bold.css">
 
     <link rel="stylesheet" href="assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <!-- <link rel="stylesheet" href="assets/vendors/bootstrap-icons/bootstrap-icons.css"> -->
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/vendors/fontawesome/all.min.css">
     <link rel="stylesheet" href="assets/css/app.css">
@@ -27,7 +28,9 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo ms-3">
-                            <a href="#"><img src="assets/images/logo/kopa.png" alt="Logo"><h5>ngopee.</h5></a>
+                            <a href="#"><img src="assets/images/logo/kopa.png" alt="Logo">
+                                <h5>ngopee.</h5>
+                            </a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -36,13 +39,13 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu">
-                        <li class="sidebar-title">Hai, Admin</li>
+                        <li class="sidebar-title">Hai, <?= $_SESSION['A']['user_nama'] ?> </li>
 
                         <li class="sidebar-item ">
                             <a href="index.php?page=admin&aksi=view" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
-                            </a>
+                            </a>    
                         </li>
 
                         <li class="sidebar-item ">
@@ -74,7 +77,7 @@
                         </li>
 
                         <li class="sidebar-item ">
-                            <a href="index.php?page=admin&aksi=kurir" class='sidebar-link'>
+                            <a href="index.php?page=admin&aksi=daftarKurir" class='sidebar-link'>
                                 <i class="bi bi-hexagon-fill"></i>
                                 <span>Kurir</span>
                             </a>
@@ -96,7 +99,6 @@
     <script src="assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/vendors/apexcharts/apexcharts.js"></script>
     <script src="assets/js/pages/dashboard.js"></script>
 
     <script src="assets/js/main.js"></script>

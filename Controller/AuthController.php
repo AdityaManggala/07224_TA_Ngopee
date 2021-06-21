@@ -47,6 +47,8 @@
             $password = $_POST['password'];
             $data = $this->model->prosesAuthPelanggan($email,$password);
             if ($data) {
+                $_SESSION['role_id']='B';
+                $_SESSION['B']=$data;
                 header("location: index.php?page=pelanggan&aksi=view&pesan=berhasil login");
             }else{
                 header("location: index.php?page=auth&aksi=login&pesan=password atau npm salah");
