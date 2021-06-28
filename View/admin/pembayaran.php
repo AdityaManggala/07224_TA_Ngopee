@@ -44,56 +44,41 @@
                 <thead>
                   <tr>
                     <th>ID Pembayaran</th>
-                    <th>ID Akun Bank</th>
+                    <th>Nomor Rek.</th>
                     <th>ID Transaksi</th>
                     <th>Nominal Transfer</th>
                     <th>Bukti Transfer</th>
-                    <th>Keterangan</th>
                     <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>PMB001</td>
-                    <td>1</td>
-                    <td>TRX001</td>
-                    <td>90000</td>
-                    <td><img src="/assets//images/invoice/invoice.jpg" alt="bayar"></td>
-                    <td>
-                      <p>pembayaran Kopi Late 2 pax</p>
-                    </td>
-                    <td>
-                      <span class="badge bg-success">Telah dikonfirmasi</span>
-                    </td>
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-primary">Konfirmasi</a>
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-warning">Detail</a>
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-danger">Hapus</a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>PMB002</td>
-                    <td>2</td>
-                    <td>TRX002</td>
-                    <td>100000</td>
-                    <td><img src="/assets//images/invoice/invoice.jpg" alt="bayar"></td>
-                    <td>
-                      <p>pembayaran Kopi Late 2 pax</p>
-                    </td>
-                    <td>
-                      <span class="badge bg-warning">Menunggu Konfirmasi</span>
-                    </td>
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-primary">Konfirmasi</a>
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-warning">Detail</a>
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-danger">Hapus</a>
-                      </div>
-                    </td>
-                  </tr>
+                  <?php foreach ($pembayaran as $row) : ?>
+                    <tr>
+                      <td><?= $row['id pembayaran'] ?></td>
+                      <td><?= $row['no rekening'] ?></td>
+                      <td><?= $row['id transaksi'] ?></td>
+                      <td><?= $row['nominal transfer'] ?></td>
+                      <td><img src="upload/trxupload/<?= $row['bukti transfer'] ?>" alt="<?= $row['bukti transfer'] ?>" width="150" height="100"></td>
+                      <td><?php
+                          if ($row['status'] == 2) { ?>
+                          <span class="badge bg-warning">Menunggu Konfirmasi</span>
+                        <?php } else if ($row['status'] == 3) { ?>
+                          <span class="badge bg-secondary">Proses pengiriman</span>
+                        <?php } else if ($row['status'] == 4) { ?>
+                          <span class="badge bg-success">Terkirim</span>
+                        <?php } ?>
+                      </td>
+                      <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <a href="index.php?page=admin&aksi=konfirmasiPembayaran&id=<?= $row['id pembayaran'] ?>" class="btn btn-primary">Konfirmasi</a>
+                          <a href="index.php?page=admin&aksi=pembatalanPembayaran&id=<?= $row['id pembayaran'] ?>" class="btn btn-danger">Batalkan</a>
+                          <!-- <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-warning">Detail</a> -->
+                          <!-- <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-danger">Hapus</a> -->
+                        </div>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>

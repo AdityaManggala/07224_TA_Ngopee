@@ -8,17 +8,11 @@ require_once "Model/kode.php";
 require_once "Model/AdminModel.php";
 require_once "Model/AuthModel.php";
 require_once "Model/PelangganModel.php";
-// require_once("Model/ModulModel.php");
-// require_once("Model/PraktikanModel.php");
-// require_once("Model/PraktikumModel.php");
 
 // //memanggil Controller
 require_once "Controller/AdminController.php";
 require_once "Controller/AuthController.php";
 require_once "Controller/PelangganController.php";
-// require_once("Controller/ModulController.php");
-// require_once("Controller/PraktikanController.php");
-// require_once("Controller/PraktikumController.php");
 
 //Routing dari URL ke Obyek Class PHP
 if (isset($_GET['page']) && isset($_GET['aksi'])) {
@@ -49,61 +43,87 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
     } else if ($page == "admin") {
         $admin = new AdminController();
         require_once "View/menu/menu_admin.php";
-        if ($aksi == 'view') {
-            $admin->index();
-        } else if ($aksi == 'daftarPelanggan') {
-            $admin->pelanggan();
-        } else if ($aksi == 'hapusPelanggan') {
-            $admin->deletePelanggan();
-        } else if ($aksi == 'daftarProduk') {
-            $admin->produk();
-        } else if ($aksi == 'tambahProduk') {
-            $admin->storeKopi();
-        } else if ($aksi == 'hapusProduk') {
-            $admin->deleteKopi();
-        } else if ($aksi == 'editProduk') {
-            $admin->editKopi();
-        } else if ($aksi == 'updateProduk') {
-            $admin->updateKopi();
-        } else if ($aksi == 'tambahKategori') {
-            $admin->storeKategori();
-        } else if ($aksi == 'hapusKategori') {
-            $admin->deleteKategori();
-        } else if ($aksi == 'daftarKurir') {
-            $admin->kurir();
-        } else if ($aksi == 'tambahKurir') {
-            $admin->storeKurir();
-        } else if ($aksi == 'hapusKurir') {
-            $admin->deleteKurir();
-        } else if ($aksi == 'transaksi') {
-            require_once "View/admin/transaksi.php";
-        } else if ($aksi == 'pembayaran') {
-            require_once "View/admin/pembayaran.php";
+        if ($_SESSION['role'] == 'A') {
+            if ($aksi == 'view') {
+                $admin->index();
+            } else if ($aksi == 'daftarPelanggan') {
+                $admin->pelanggan();
+            } else if ($aksi == 'hapusPelanggan') {
+                $admin->deletePelanggan();
+            } else if ($aksi == 'daftarProduk') {
+                $admin->produk();
+            } else if ($aksi == 'tambahProduk') {
+                $admin->storeKopi();
+            } else if ($aksi == 'hapusProduk') {
+                $admin->deleteKopi();
+            } else if ($aksi == 'editProduk') {
+                $admin->editKopi();
+            } else if ($aksi == 'updateProduk') {
+                $admin->updateKopi();
+            } else if ($aksi == 'tambahKategori') {
+                $admin->storeKategori();
+            } else if ($aksi == 'hapusKategori') {
+                $admin->deleteKategori();
+            } else if ($aksi == 'daftarKurir') {
+                $admin->kurir();
+            } else if ($aksi == 'tambahKurir') {
+                $admin->storeKurir();
+            } else if ($aksi == 'hapusKurir') {
+                $admin->deleteKurir();
+            } else if ($aksi == 'transaksi') {
+                $admin->transaksi();
+            } else if ($aksi == 'kirimTransaksi') {
+                $admin->kirimtransaksi();
+            } else if ($aksi == 'pembayaran') {
+                $admin->pembayaran();
+            } else if ($aksi == 'konfirmasiPembayaran') {
+                $admin->konfirmasiPembayaran();
+            } else if ($aksi == 'pembatalanPembayaran') {
+                $admin->batalkanPembayaran();
+            } else {
+                require_once "View/menu/error-404.php";
+            }
         } else {
-            require_once "View/menu/error-404.php";
+            header("location: index.php?page=auth&aksi=loginadmin");
         }
     } else if ($page == "pelanggan") {
         $pelanggan = new PelangganController();
         require_once "View/menu/menu_pelanggan.php";
-        if ($aksi == 'view') {
-            $pelanggan->index();
-            // require_once "View/pelanggan/index.php";
-        } else if ($aksi == 'editProfil') {
-            $pelanggan->edit();
-            // require_once "View/pelanggan/profil.php";
-        } else if ($aksi == 'updateProfil') {
-            $pelanggan->update();
-        } else if ($aksi == 'keranjang') {
-            require_once "View/pelanggan/keranjang.php";
-        } else if ($aksi == 'pembayaran') {
-            require_once "View/pelanggan/pembayaran.php";
-        } else if ($aksi == 'akunBank') {
-            require_once "View/pelanggan/akun_bank.php";
+        if ($_SESSION['role'] == 'B') {
+            if ($aksi == 'view') {
+                $pelanggan->index();
+            } else if ($aksi == 'getKopiByid') {
+                $pelanggan->getDataKopiById();
+            } else if ($aksi == 'editProfil') {
+                $pelanggan->edit();
+            } else if ($aksi == 'updateProfil') {
+                $pelanggan->update();
+            } else if ($aksi == 'akunBank') {
+                $pelanggan->akunBank();
+            } else if ($aksi == 'tambahAkunBank') {
+                $pelanggan->storeAkunBank();
+            } else if ($aksi == 'hapusAkunBank') {
+                $pelanggan->DeleteAkunBank();
+            } else if ($aksi == 'keranjang') {
+                $pelanggan->keranjang();
+            } else if ($aksi == 'tambahKeranjang') {
+                $pelanggan->inputKeranjang();
+            } else if ($aksi == 'hapusKeranjang') {
+                $pelanggan->deleteKeranjang();
+            } else if ($aksi == 'simpanTransaksi') {
+                $pelanggan->simpanTransaksi();
+            } else if ($aksi == 'riwayatTransaksi') {
+                $pelanggan->riwayatTransaksi();
+            } else if ($aksi == 'pembayaran') {
+                $pelanggan->pembayaran();
+            } else if ($aksi == 'storePembayaran') {
+                $pelanggan->storePembayaran();
+            } else {
+                require_once "View/menu/error-404.php";
+            }
         } else {
-            require_once "View/menu/error-404.php";
+            header("location: index.php?page=auth&aksi=view");
         }
-    } else {
-        echo "Page Not Found";
     }
 } else {
     header("location: index.php?page=auth&aksi=view"); //Jangan ada spasi habis location

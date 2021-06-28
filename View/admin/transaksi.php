@@ -54,42 +54,35 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>TRX001</td>
-                    <td>PMB001</td>
-                    <td>2021-06-06</td>
-                    <td>Graiden</td>
-                    <td>Sujiman</td>
-                    <td>JNE</td>
-                    <td>
-                      <span class="badge bg-success">Telah dikirim</span>
-                    </td>
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-primary">Kirim</a>
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-warning">Detail</a>
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-danger">Hapus</a>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>TRX002</td>
-                    <td>PMB002</td>
-                    <td>2021-06-07</td>
-                    <td>Gaden</td>
-                    <td>Sukijan</td>
-                    <td>JNE</td>
-                    <td>
-                      <span class="badge bg-warning">Menunggu pengiriman</span>
-                    </td>
-                    <td>
-                      <div class="btn-group" role="group" aria-label="Basic example">
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-primary">Kirim</a>
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-warning">Detail</a>
-                        <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-danger">Hapus</a>
-                      </div>
-                    </td>
-                  </tr>
+                  <?php foreach ($data as $row) : ?>
+                    <tr>
+                      <td><?= $row['id transaksi'] ?></td>
+                      <td><?= $row['id pembayaran'] ?></td>
+                      <td><?= $row['tgl trx'] ?></td>
+                      <td><?= $row['nama pembeli'] ?></td>
+                      <td><?= $row['nama admin'] ?></td>
+                      <td><?= $row['nama kurir'] ?></td>
+                      <td><?php
+                          if ($row['status'] == 3) { ?>
+                          <span class="badge bg-info">Menunggu pengiriman</span>
+                        <?php } else if ($row['status'] == 4) { ?>
+                          <span class="badge bg-success">Terkirim</span>
+                        <?php } else if ($row['status'] == 5) { ?>
+                          <span class="badge bg-dark">Dibatalkan Admin</span>
+                        <?php } ?>
+                      </td>
+                      <td>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                          <?php if ($row['status'] == 3) : ?>
+                            <a href="index.php?page=admin&aksi=kirimTransaksi&id=<?= $row['id transaksi'] ?>" class="btn btn-primary">Kirim</a>
+                            <a href="index.php?page=admin&aksi=detailTransaksi&id=#" class="btn btn-warning">Detail</a>
+                          <?php elseif ($row['status'] > 3) : ?>
+                            <a href="index.php?page=admin&aksi=detailTransaksi&id=#" class="btn btn-warning">Detail</a>
+                          <?php endif; ?>
+                        </div>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
                 </tbody>
               </table>
             </div>

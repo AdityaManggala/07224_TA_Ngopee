@@ -88,24 +88,29 @@ class AdminModel
         public function getTransaksi()
         {
                 $sql = "SELECT t.transaksi_id as 'id transaksi',
-                        p.pembayaran_id as 'id pembayaran',
+                        t.pembayaran_id as 'id pembayaran',
                         t.transaksi_tgl as 'tgl trx',
                         k.kurir_desc as 'nama kurir',
                         up.user_nama as 'nama pembeli',
                         ua.user_nama as 'nama admin',
                         t.status_id as 'status'
                         from transaksi as t
-                        JOIN user as up ON (t.pembeli_id = up.user_id)
-                        JOIN kurir as k ON (t.kurir_id = k.kurir_id)
-                        JOIN user as ua ON (t.admin_id = ua.user_id)
-                        JOIN pembayaran as p ON(t.pembayaran_id = p.pembayaran_id)
-                        JOIN status as s ON(t.status_id = s.status_id)";
+                        JOIN user up ON t.pembeli_id = up.user_id
+                        JOIN kurir k ON t.kurir_id = k.kurir_id
+                        JOIN user ua ON t.admin_id = ua.user_id
+                        where t.status_id > 2 AND t.status_id <5";
                 $query = koneksi()->query($sql);
                 $hasil = [];
                 while ($data = $query->fetch_assoc()) {
                         $hasil[] = $data;
                 }
                 return $hasil;
+        }
+
+        public function prosesKirimTransaksi($id)
+        {
+                $sql = "UPDATE transaksi SET status_id = 4 where transaksi_id = '$id'";
+                return koneksi()->query($sql);
         }
 
         public function getPelanggan()
@@ -133,21 +138,35 @@ class AdminModel
 
         public function getPembayaran()
         {
-                $sql = "SELECT p.pembayaran_id as 'id pembayaran',
-                        t.transaksi_id as 'id transaksi',
-                        ab.akunbank_norek as 'no rekening',
-                        p.pembayaran_nominaltrans as 'nominal transfer',
-                        p.pembayaran_buktitransfer as 'bukti transfer',
-                        p.pembayaran_keterangan as 'keterangan'
-                        from pembayaran as p
-                        JOIN transaksi as t ON(p.transaksi_id = t.transaksi_id)
-                        JOIN akun_bank as ab ON(p.akunbank_id = ab.akunbank_id)";
+                $sql = "SELECT p.pembayaran_id as 'id pembayaran', 
+                        p.transaksi_id as 'id transaksi', 
+                        ab.akunbank_norek as 'no rekening', 
+                        p.pembayaran_nominaltrans as 'nominal transfer', 
+                        p.pembayaran_buktitransfer as 'bukti transfer', 
+                        p.pembayaran_keterangan as 'keterangan', 
+                        t.status_id as status 
+                        from pembayaran p 
+                        JOIN transaksi t ON(p.transaksi_id = t.transaksi_id) 
+                        JOIN akun_bank ab ON(p.akunbank_id = ab.akunbank_id)
+                        where t.status_id = 2";
                 $query = koneksi()->query($sql);
                 $hasil = [];
                 while ($data = $query->fetch_assoc()) {
                         $hasil[] = $data;
                 }
                 return $hasil;
+        }
+
+        public function prosesKonfirmasiPembayaran($id, $idAdmin)
+        {
+                $sql = "UPDATE transaksi SET status_id = 3, admin_id = $idAdmin where pembayaran_id = '$id'";
+                return koneksi()->query($sql);
+        }
+
+        public function prosespembatalanPembayaran($id)
+        {
+                $sql = "UPDATE transaksi SET status_id = 5 where pembayaran_id = '$id'";
+                return koneksi()->query($sql);
         }
 
         public function getKurir()
@@ -174,5 +193,5 @@ class AdminModel
         }
 }
 // $tes = new AdminModel();
-// var_export($tes->prosesDeleteKopi('KP002'));
+// var_export($tes->prosesKonfirmasiPembayaran('PMB001'));
 // die();

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keranjang</title>
+    <title>Riwayat Transaksi</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/bootstrap.css">
@@ -25,7 +25,7 @@
 
     <div class="container">
         <div class="page-heading">
-            <h3>Keranjang</h3>
+            <h3>Riwayat Transaksi</h3>
         </div>
         <div class="page-content">
             <section class="section">
@@ -33,15 +33,15 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Item barang </h4>
+                                <h4 class="card-title">Daftar Transaksi </h4>
                                 <div class="table-responsive">
                                     <table class="table table-hover mb-0">
                                         <thead>
                                             <tr>
-                                                <th class="col-5">Nama barang</th>
-                                                <th class="col-2">Qty</th>
-                                                <th class="col-2">Harga</th>
-                                                <th class="col-3">Aksi</th>
+                                                <th class="col-2">ID transaksi</th>
+                                                <th class="col-3">Tanggal Transaksi</th>
+                                                <th class="col-3">Status Transaksi</th>
+                                                <th class="col-4">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -49,11 +49,27 @@
 
                                                 <?php foreach ($data as $row) : ?>
                                                     <tr>
-                                                        <td class="text-bold-500"><?= $row['kopi_nama'] ?></td>
-                                                        <td class="text-bold-500"><?= $row['qty'] ?></td>
-                                                        <td class="text-bold-500"><?= $row['kopi_harga'] ?></td>
+                                                        <td class="text-bold-500"><?= $row['transaksi_id'] ?></td>
+                                                        <td class="text-bold-500"><?= $row['transaksi_tgl'] ?></td>
+                                                        <td><?php
+                                                            if ($row['status_id'] == 1) { ?>
+                                                                <span class="badge bg-danger">Belum Bayar</span>
+                                                            <?php } else if ($row['status_id'] == 2) { ?>
+                                                                <span class="badge bg-warning">Menunggu Konfirmasi</span>
+                                                            <?php } else if ($row['status_id'] == 3) { ?>
+                                                                <span class="badge bg-info">Menunggu pengiriman</span>
+                                                            <?php } else if ($row['status_id'] == 4) { ?>
+                                                                <span class="badge bg-success">Terkirim</span>
+                                                            <?php } else if ($row['status_id'] == 5) { ?>
+                                                                <span class="badge bg-dark">Dibatalkan Admin</span>
+                                                            <?php } ?>
+                                                        </td>
                                                         <td>
-                                                            <a href="index.php?page=pelanggan&aksi=hapusKeranjang&id=<?= $row['kopi_id'] ?>&idtrx=<?= $row['transaksi_id'] ?> " class="btn btn-danger">Hapus</a>
+                                                            <?php if ($row['status_id'] == 1) : ?>
+                                                                <a href="index.php?page=pelanggan&aksi=pembayaran&id=<?= $row['transaksi_id'] ?>" class="btn btn-success">Bayar</a>
+                                                            <?php else : ?>
+                                                                <a href="index.php?page=pelanggan&aksi=detail&id=<?= $row['transaksi_id'] ?>" class="btn btn-warning">Detail</a>
+                                                            <?php endif; ?>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
@@ -65,26 +81,6 @@
                                             <?php endif; ?>
                                         </tbody>
                                     </table>
-
-
-                                    <?php if (!empty($data)) : ?>
-                                        <div class="alert alert-info">
-                                            TOTAL HARGA =
-                                            <?php
-                                            $harga = 0;
-                                            foreach ($data as $row) {
-                                                $harga += $row['kopi_harga'] * $row['qty'];
-                                            } ?>
-                                            <?= formatRupiah($harga) ?>
-                                        <?php else : ?>
-                                            <!-- <div class="alert alert-danger">
-                                                Data Kosong
-                                            </div> -->
-                                        <?php endif; ?>
-                                        </div>
-                                        <div class="col-12 d-flex justify-content-end">
-                                            <a href="index.php?page=pelanggan&aksi=simpanTransaksi&idtrx=<?= $row['transaksi_id'] ?>" class=" btn btn-primary me-1 mb-1">Simpan Transaksi</a>
-                                        </div>
                                 </div>
                             </div>
                         </div>

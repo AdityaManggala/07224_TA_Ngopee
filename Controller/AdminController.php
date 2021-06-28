@@ -90,6 +90,7 @@ class AdminController
                 if (unlink($lokasi . $getgambar)) {
                     if (move_uploaded_file($gambar, $lokasi . $namaFile)) {
                         if ($this->model->prosesUpdateKopi($id, $nama, $jenisproduk, $harga, $namaFile, $desc)) {
+
                             header("location: index.php?page=admin&aksi=daftarProduk&pesan=Berhasil Ubah Data");
                         } else {
                             header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Ubah Data");
@@ -115,6 +116,7 @@ class AdminController
             }
         }
     }
+
 
     public function storeKategori()
     {
@@ -150,6 +152,51 @@ class AdminController
             header("location: index.php?page=admin&aksi=daftarPelanggan&pesan=berhasilhapus");
         } else {
             header("location: index.php?page=admin&aksi=daftarPelanggan&pesan=Gagalhapus");
+        }
+    }
+
+    public function transaksi()
+    {
+        $data = $this->model->getTransaksi();
+        extract($data);
+        require_once("View/admin/transaksi.php");
+    }
+
+    public function kirimtransaksi()
+    {
+        $id = $_GET['id'];
+        if ($this->model->prosesKirimTransaksi($id)) {
+            header("location: index.php?page=admin&aksi=transaksi&pesan=berhasilkirim");
+        } else {
+            header("location: index.php?page=admin&aksi=transaksi&pesan=Gagalkirim");
+        }
+    }
+
+    public function pembayaran()
+    {
+        $pembayaran = $this->model->getPembayaran();
+        extract($pembayaran);
+        require_once("View/admin/pembayaran.php");
+    }
+
+    public function konfirmasiPembayaran()
+    {
+        $idAdmin = $_SESSION['A']['user_id'];
+        $id = $_GET['id'];
+        if ($this->model->prosesKonfirmasiPembayaran($id, $idAdmin)) {
+            header("location: index.php?page=admin&aksi=pembayaran&pesan=Berhasil konfirmasi");
+        } else {
+            header("location: index.php?page=admin&aksi=pembayaran&pesan=Gagal konfirmasi");
+        }
+    }
+
+    public function batalkanPembayaran()
+    {
+        $id = $_GET['id'];
+        if ($this->model->prosesPembatalanPembayaran($id)) {
+            header("location: index.php?page=admin&aksi=pembayaran&pesan=Berhasil dibatalkan");
+        } else {
+            header("location: index.php?page=admin&aksi=pembayaran&pesan=Gagal dibatalkan");
         }
     }
 

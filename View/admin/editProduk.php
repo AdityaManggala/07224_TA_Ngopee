@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Produk</title>
+    <title>Edit Produk</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
@@ -76,7 +76,7 @@
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="formFile" class="form-label">Gambar Produk</label>
-                                                    <input class="form-control" type="file" id="formFile" name="image" accept=".jpg, .png">
+                                                    <input class="form-control" type="file" id="formFile" name="image" accept=".jpg, .png" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
