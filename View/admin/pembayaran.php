@@ -73,8 +73,6 @@
                         <div class="btn-group" role="group" aria-label="Basic example">
                           <a href="index.php?page=admin&aksi=konfirmasiPembayaran&id=<?= $row['id pembayaran'] ?>" class="btn btn-primary">Konfirmasi</a>
                           <a href="index.php?page=admin&aksi=pembatalanPembayaran&id=<?= $row['id pembayaran'] ?>" class="btn btn-danger">Batalkan</a>
-                          <!-- <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-warning">Detail</a> -->
-                          <!-- <a href="index.php?page=praktikum&aksi=edit&id=#" class="btn btn-danger">Hapus</a> -->
                         </div>
                       </td>
                     </tr>

@@ -1,0 +1,47 @@
+* {
+    -webkit-print-color-adjust: exact !important;   /* Chrome, Safari */
+    color-adjust: exact !important;                 /*Firefox*/
+}
+@media print {
+    body{
+        margin: 0;
+        width: 100%;
+    }
+
+    #app {
+        all: unset;
+    }
+
+    #app #main {
+        all: unset;
+    }
+
+    #app #main .container{
+        all: unset
+    }
+}
+
+@page { 
+    size: A4;
+    margin: 20mm 20mm 20mm 20mm;
+}
+
+#sidebar{
+    display: none;
+    visibility: hidden;
+}
+
+.page-heading{
+    display: none;
+    visibility: hidden;
+}
+
+#print-btn{
+    display: none;
+    visibility: hidden;
+}
+
+#navbarSupportedContent{
+    display: none;
+    visibility: hidden;
+}

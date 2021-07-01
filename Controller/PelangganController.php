@@ -169,4 +169,14 @@ class PelangganController
             header("location: index.php?page=pelanggan&aksi=riwayatTransaksi&pesan=gagal upload");
         }
     }
+
+    public function detailRiwayatTransaksi()
+    {
+        $id = $_GET['id'];
+        $data = $this->model->getDetailRiwayatTransaksi($id);
+        extract($data);
+        $user = $this->model->getUserByTransaksi($id);
+        extract($user);
+        require_once("View/pelanggan/detail_transaksi.php");
+    }
 }

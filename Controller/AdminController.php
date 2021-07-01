@@ -10,6 +10,16 @@ class AdminController
 
     public function index()
     {
+        $jumlahmenu = $this->model->jumlahMenu();
+        extract($jumlahmenu);
+        $jumlahkategori = $this->model->jumlahKategori();
+        extract($jumlahkategori);
+        $success = $this->model->jumlahTransaksiSelesai();
+        extract($success);
+        $proses = $this->model->jumlahTransaksiproses();
+        extract($proses);
+        $pelanggan = $this->model->jumlahPelanggan();
+        extract($pelanggan);
         require_once("View/admin/index.php");
     }
 
@@ -80,42 +90,39 @@ class AdminController
         $harga = $_POST['harga'];
         $desc = $_POST['desc'];
         $namagambar = $_FILES['image']['name'];
-        $gambar = $_FILES['image']['tmp_name'];
         $getgambar = $_POST['namafoto'];
         $namaFile = $nama . ".jpg";
         $lokasi = __DIR__ . '/../upload/';
+        if (isset($namagambar)) {
 
-        if ($namagambar != $getgambar) {
-            if ($namagambar != '') {
-                if (unlink($lokasi . $getgambar)) {
-                    if (move_uploaded_file($gambar, $lokasi . $namaFile)) {
-                        if ($this->model->prosesUpdateKopi($id, $nama, $jenisproduk, $harga, $namaFile, $desc)) {
+            $gambar = $_FILES['image']['tmp_name'];
 
-                            header("location: index.php?page=admin&aksi=daftarProduk&pesan=Berhasil Ubah Data");
-                        } else {
-                            header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Ubah Data");
-                        }
+            if (file_exists($lokasi . $getgambar)) {
+                unlink($lokasi . $getgambar);
+                if (move_uploaded_file($gambar, $lokasi . $namaFile)) {
+                    if ($this->model->prosesUpdateKopi($id, $nama, $jenisproduk, $harga, $namaFile, $desc)) {
+                        header("location: index.php?page=admin&aksi=daftarProduk&pesan=Berhasil Ubah Data");
                     } else {
-                        header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Upload Gambar");
+                        unlink($lokasi . $namaFile);
+                        header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Ubah Data");
                     }
                 } else {
-                    header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Menghapus Gambar lama");
+                    header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Upload Gambar");
                 }
             } else {
-                if ($this->model->prosesUpdateKopi($id, $nama, $jenisproduk, $harga, $namaFile, $desc)) {
-                    header("location: index.php?page=admin&aksi=daftarProduk&pesan=Berhasil Ubah Data");
-                } else {
-                    header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Ubah Data");
-                }
+                header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Menghapus Gambar lama");
             }
         } else {
+            $namaFile = $getgambar;
             if ($this->model->prosesUpdateKopi($id, $nama, $jenisproduk, $harga, $namaFile, $desc)) {
-                header("location: index.php?page=admin&aksi=daftarProduk&pesan=Berhasil Ubah Data");
+                header("location: index.php?page=admin&aksi=daftarProduk&pesan=Berhasil Ubah Data&id");
             } else {
+                unlink($lokasi . $namaFile);
                 header("location: index.php?page=admin&aksi=daftarProduk&pesan=Gagal Ubah Data");
             }
         }
     }
+
 
 
     public function storeKategori()
@@ -225,5 +232,15 @@ class AdminController
         } else {
             header("location: index.php?page=admin&aksi=daftarKurir&pesan=Gagal hapus");
         }
+    }
+
+    public function detailTransaksi()
+    {
+        $id = $_GET['id'];
+        $data = $this->model->getDetailRiwayatTransaksi($id);
+        extract($data);
+        $user = $this->model->getUserByTransaksi($id);
+        extract($user);
+        require_once("View/admin/detailTransaksi.php");
     }
 }

@@ -72,6 +72,8 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 $admin->deleteKurir();
             } else if ($aksi == 'transaksi') {
                 $admin->transaksi();
+            } else if ($aksi == 'detailTransaksi') {
+                $admin->detailTransaksi();
             } else if ($aksi == 'kirimTransaksi') {
                 $admin->kirimtransaksi();
             } else if ($aksi == 'pembayaran') {
@@ -114,6 +116,8 @@ if (isset($_GET['page']) && isset($_GET['aksi'])) {
                 $pelanggan->simpanTransaksi();
             } else if ($aksi == 'riwayatTransaksi') {
                 $pelanggan->riwayatTransaksi();
+            } else if ($aksi == 'detailTransaksi') {
+                $pelanggan->detailRiwayatTransaksi();
             } else if ($aksi == 'pembayaran') {
                 $pelanggan->pembayaran();
             } else if ($aksi == 'storePembayaran') {

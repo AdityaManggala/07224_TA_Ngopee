@@ -75,9 +75,9 @@
                         <div class="btn-group" role="group" aria-label="Basic example">
                           <?php if ($row['status'] == 3) : ?>
                             <a href="index.php?page=admin&aksi=kirimTransaksi&id=<?= $row['id transaksi'] ?>" class="btn btn-primary">Kirim</a>
-                            <a href="index.php?page=admin&aksi=detailTransaksi&id=#" class="btn btn-warning">Detail</a>
+                            <a href="index.php?page=admin&aksi=detailTransaksi&id=<?= $row['id transaksi'] ?>" class="btn btn-warning">Detail</a>
                           <?php elseif ($row['status'] > 3) : ?>
-                            <a href="index.php?page=admin&aksi=detailTransaksi&id=#" class="btn btn-warning">Detail</a>
+                            <a href="index.php?page=admin&aksi=detailTransaksi&id=<?= $row['id transaksi'] ?>" class="btn btn-warning">Detail</a>
                           <?php endif; ?>
                         </div>
                       </td>

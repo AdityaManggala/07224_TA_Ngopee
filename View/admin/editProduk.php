@@ -45,7 +45,7 @@
                                             <input type="hidden" name="namafoto" value="<?= $data['gambarKopi'] ?>">
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="disabledInput">Kode Produk</label>
+                                                    <label for="readonlyInput">Kode Produk</label>
                                                     <input type="text" class="form-control" id="readonlyInput" readonly="readonly" value="<?= $data['idKopi'] ?>" name="id">
                                                 </div>
                                             </div>

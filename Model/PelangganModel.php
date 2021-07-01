@@ -18,7 +18,7 @@ class PelangganModel
                 k.kopi_harga as hargaKopi,
                 k.kopi_keterangan as descKopi,
                 k.kopi_gambar as gambarKopi
-                from 
+                from
                 kopi as k
                 JOIN jenis_produk as jp ON (k.jenisproduk_id = jp.jenisproduk_id)";
         $query = koneksi()->query($sql);
@@ -85,20 +85,6 @@ class PelangganModel
         }
     }
 
-    public function getidtrxriwayat($id)
-    {
-        $sql = "SELECT transaksi_id from transaksi Where status_id > 0 AND pembeli_id = $id";
-        $query = koneksi()->query($sql);
-        $idtransaksi = $query->fetch_assoc();
-        if (!empty($idtransaksi)) {
-            $hasil = $idtransaksi['transaksi_id'];
-            return $hasil;
-        } else {
-            return "DATA KOSONG";
-        }
-    }
-
-
     public function cekDetailDataExist($idpembeli, $idproduk)
     {
         $sql = "SELECT * from detail_transaksi dt
@@ -111,11 +97,6 @@ class PelangganModel
         $query = koneksi()->query($sql);
         return $query;
     }
-
-    // public function FunctionName()
-    // {
-    //     # code...
-    // }
 
     public function daftarAkunBank($id)
     {
@@ -168,20 +149,32 @@ class PelangganModel
         return $hasil;
     }
 
-    public function getDetailRiwayatTransaksi($id)
+    public function getDetailRiwayatTransaksi($idtrx)
     {
-        $hasil = $this->getidtrxriwayat($id);
-        $sql = "SELECT * FROM detail_transaksi dt
-        JOIN transaksi tr on tr.transaksi_id = dt.transaksi_id 
-        where dt.transaksi_id = '$hasil' 
-        AND tr.pembeli_id = $id 
-        AND tr.status_id > 0";
+        $sql = "SELECT dt.kopi_id,kp.kopi_nama,dt.qty,dt.transaksi_id,
+                kp.kopi_harga,jp.jenisproduk_nama FROM detail_transaksi dt 
+            JOIN kopi kp on kp.kopi_id = dt.kopi_id 
+            JOIN transaksi tr on tr.transaksi_id = dt.transaksi_id
+            JOIN jenis_produk jp on jp.jenisproduk_id = kp.jenisproduk_id  
+            where dt.transaksi_id = '$idtrx' 
+            AND tr.status_id > 0";
         $query = koneksi()->query($sql);
         $cart = [];
         while ($data = $query->fetch_assoc()) {
             $cart[] = $data;
         }
         return $cart;
+    }
+
+    public function getUserByTransaksi($idtrx)
+    {
+        $sql = "SELECT us.user_nama, us.user_alamat, us.user_notelp,
+                tr.transaksi_id, tr.transaksi_tgl 
+                from transaksi tr
+                JOIN user us ON tr.pembeli_id = us.user_id
+                Where tr.transaksi_id = '$idtrx'";
+        $query = koneksi()->query($sql);
+        return $query->fetch_assoc();
     }
 
     public function getCart($id)
@@ -297,8 +290,4 @@ class PelangganModel
         $sql = "UPDATE transaksi SET kurir_id = $kurir, status_id = 2 where transaksi_id = '$id'";
         return koneksi()->query($sql);
     }
-
 }
-// $tes = new PelangganModel();
-// var_dump($tes->prosesStorePembayaran('PMB001', 'TRX001', 4, 90000, 'TRX001', 'TES', 5));
-// die();

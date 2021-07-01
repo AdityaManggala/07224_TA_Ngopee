@@ -13,16 +13,6 @@
 </head>
 
 <body>
-    <!-- <nav class="navbar navbar-light">
-        <div class="container d-block">
-            <a href="index.html"><i class="bi bi-chevron-left"></i></a>
-            <a class="navbar-brand ms-4" href="index.html">
-                <img src="assets/images/logo/logo.png">
-            </a>
-        </div>
-    </nav> -->
-
-
     <div class="container">
         <div class="page-heading">
             <h3>Riwayat Transaksi</h3>
@@ -68,7 +58,7 @@
                                                             <?php if ($row['status_id'] == 1) : ?>
                                                                 <a href="index.php?page=pelanggan&aksi=pembayaran&id=<?= $row['transaksi_id'] ?>" class="btn btn-success">Bayar</a>
                                                             <?php else : ?>
-                                                                <a href="index.php?page=pelanggan&aksi=detail&id=<?= $row['transaksi_id'] ?>" class="btn btn-warning">Detail</a>
+                                                                <a href="index.php?page=pelanggan&aksi=detailTransaksi&id=<?= $row['transaksi_id'] ?>" class="btn btn-warning">Detail</a>
                                                             <?php endif; ?>
                                                         </td>
                                                     </tr>

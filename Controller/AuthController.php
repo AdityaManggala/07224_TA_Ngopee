@@ -9,25 +9,21 @@ class AuthController
         $this->model = new AuthModel();
     }
 
-    /** Function index berfungsi untuk mengatur tampilan awal */
     public function index()
     {
         require_once("View/auth/login.php");
     }
 
-    /** Function login_aslab berfungsi untuk mengatur halaman login untuk aslab */
     public function loginadmin()
     {
         require_once("View/auth/loginadmin.php");
     }
 
-    /** Function daftar_praktikan berfungsi untuk mengatur halaman daftar */
     public function registerPelanggan()
     {
         require_once("View/auth/register.php");
     }
 
-    /** Function authAslab berfungsi untuk authentication aslab */
     public function authAdmin()
     {
         $email = $_POST['email'];
@@ -41,7 +37,7 @@ class AuthController
             header("location: index.php?page=auth&aksi=loginadmin&pesan=password atau npm salah");
         }
     }
-    /** Function authPraktikan berfungsi untuk authentication praktikan */
+
     public function authPelanggan()
     {
         $email = $_POST['email'];
@@ -53,7 +49,7 @@ class AuthController
             $_SESSION['status'] = 'OK';
             header("location: index.php?page=pelanggan&aksi=view&pesan=berhasil login");
         } else {
-            header("location: index.php?page=auth&aksi=login&pesan=password atau npm salah");
+            header("location: index.php?page=auth&aksi=view&pesan=password atau npm salah");
         }
     }
 
@@ -63,9 +59,6 @@ class AuthController
         header("location: index.php?page=auth&aksi=view&pesan=berhasil logout!!");
     }
 
-    /**
-     * proses storePraktikan berfungsi untuk memproses data untuk ditambahkan ke database
-     */
     public function storePelanggan()
     {
         $nama = $_POST['nama'];

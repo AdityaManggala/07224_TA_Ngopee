@@ -98,7 +98,7 @@ class AdminModel
                         JOIN user up ON t.pembeli_id = up.user_id
                         JOIN kurir k ON t.kurir_id = k.kurir_id
                         JOIN user ua ON t.admin_id = ua.user_id
-                        where t.status_id > 2 AND t.status_id <5";
+                        where t.status_id  > 2 ORDER BY status ";
                 $query = koneksi()->query($sql);
                 $hasil = [];
                 while ($data = $query->fetch_assoc()) {
@@ -111,6 +111,34 @@ class AdminModel
         {
                 $sql = "UPDATE transaksi SET status_id = 4 where transaksi_id = '$id'";
                 return koneksi()->query($sql);
+        }
+
+        public function getDetailRiwayatTransaksi($idtrx)
+        {
+                $sql = "SELECT dt.kopi_id,kp.kopi_nama,dt.qty,dt.transaksi_id,
+                kp.kopi_harga,jp.jenisproduk_nama FROM detail_transaksi dt 
+                JOIN kopi kp on kp.kopi_id = dt.kopi_id 
+                JOIN transaksi tr on tr.transaksi_id = dt.transaksi_id
+                JOIN jenis_produk jp on jp.jenisproduk_id = kp.jenisproduk_id  
+                where dt.transaksi_id = '$idtrx' 
+                AND tr.status_id > 0";
+                $query = koneksi()->query($sql);
+                $cart = [];
+                while ($data = $query->fetch_assoc()) {
+                        $cart[] = $data;
+                }
+                return $cart;
+        }
+
+        public function getUserByTransaksi($idtrx)
+        {
+                $sql = "SELECT us.user_nama, us.user_alamat, us.user_notelp,
+                tr.transaksi_id, tr.transaksi_tgl 
+                from transaksi tr
+                JOIN user us ON tr.pembeli_id = us.user_id
+                Where tr.transaksi_id = '$idtrx'";
+                $query = koneksi()->query($sql);
+                return $query->fetch_assoc();
         }
 
         public function getPelanggan()
@@ -191,7 +219,44 @@ class AdminModel
                 $sql = "DELETE from kurir where kurir_id = $id";
                 return koneksi()->query($sql);
         }
+
+        public function jumlahMenu()
+        {
+                $sql = "SELECT COUNT(kopi_id) as jumlah From kopi";
+                $query = koneksi()->query($sql);
+                $hasil = $query->fetch_assoc();
+                return $hasil;
+        }
+
+        public function jumlahKategori()
+        {
+                $sql = "SELECT COUNT(jenisproduk_id) as jumlah From jenis_produk";
+                $query = koneksi()->query($sql);
+                $hasil = $query->fetch_assoc();
+                return $hasil;
+        }
+
+        public function jumlahTransaksiSelesai()
+        {
+                $sql = "SELECT COUNT(transaksi_id) as jumlah from transaksi where status_id = 4";
+                $query = koneksi()->query($sql);
+                $hasil = $query->fetch_assoc();
+                return $hasil;
+        }
+
+        public function jumlahTransaksiproses()
+        {
+                $sql = "SELECT COUNT(transaksi_id) as jumlah from transaksi where status_id <4 AND pembayaran_id != ''";
+                $query = koneksi()->query($sql);
+                $hasil = $query->fetch_assoc();
+                return $hasil;
+        }
+
+        public function jumlahPelanggan()
+        {
+                $sql = "SELECT COUNT(pembeli_id) as jumlah from transaksi";
+                $query = koneksi()->query($sql);
+                $hasil = $query->fetch_assoc();
+                return $hasil;
+        }
 }
-// $tes = new AdminModel();
-// var_export($tes->prosesKonfirmasiPembayaran('PMB001'));
-// die();
